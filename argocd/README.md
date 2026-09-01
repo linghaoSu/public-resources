@@ -1,33 +1,20 @@
 # Argo CD — Ignore-Differences Editor (argoproj/argo-cd#29330)
 
-Assets for the in-UI "ignore differences" editor proposal.
-Screenshots live in [`assets/`](./assets) and are referenced from markdown —
-reference them the same way in issue comments via their raw URLs.
+English-only assets for the in-UI "ignore differences" editor proposal.
+The two annotated SVGs below are fully self-contained (screenshots embedded)
+— reference either directly in issue comments via its raw URL.
 
-## Core flow (SVG, vector)
+## Part 1/2 — Discover & Draft (steps 1–4, validation & scope loops)
+
+![Part 1 — Discover & Draft](./ignore-rule-flow-part1-en.svg)
+
+## Part 2/2 — Save & Manage (steps 5–6, "View rule" re-entry)
+
+![Part 2 — Save & Manage](./ignore-rule-flow-part2-en.svg)
+
+## Compact flow (nodes only, 5 KB)
 
 ![Core flow](./ignore-rule-flow-en.svg)
-
-## Step-by-step with UI screenshots
-
-### Steps 1–2 · Diff tab — inline "Ignore…" entry on the added row
-
-![Diff tab with inline Ignore entry](./assets/flow-shot-diff.png)
-
-### Steps 3–4 · Editor drawer — live impact preview, ‹ n/N › match navigation
-
-Scope and pointer are prefilled from the clicked row; the impact bar and
-"will ignore" row highlights update on every keystroke.
-
-![Drawer with live impact preview](./assets/flow-shot-drawer.png)
-
-### Step 5 · Save — rows turn grey "ignored", card badges, confirmation toast
-
-![Saved state](./assets/flow-shot-saved.png)
-
-### Step 6 · Manage in Ignored Fields — rule list, validation, Preview Against Manifests
-
-![Ignored Fields management](./assets/flow-shot-manage.png)
 
 ## Mermaid (paste directly into GitHub comments)
 
@@ -46,6 +33,4 @@ flowchart TD
   H -. "View rule, edit again" .-> C
 ```
 
-> Note: the SVG keeps no external image references on purpose — GitHub blocks
-> external resources inside SVGs rendered as images, so screenshots are plain
-> repo files referenced from markdown instead.
+Raw screenshots (PNG sources) live in [`assets/`](./assets).
