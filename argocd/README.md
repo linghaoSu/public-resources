@@ -1,20 +1,14 @@
 # Argo CD — Ignore-Differences Editor (argoproj/argo-cd#29330)
 
-English-only assets for the in-UI "ignore differences" editor proposal.
-The two annotated SVGs below are fully self-contained (screenshots embedded)
-— reference either directly in issue comments via its raw URL.
+Assets for the in-UI "ignore differences" editor proposal.
 
-## Part 1/2 — Discover & Draft (steps 1–4, validation & scope loops)
+## Annotated interaction flow (UI screenshots embedded, single file)
 
-![Part 1 — Discover & Draft](./ignore-rule-flow-part1-en.svg)
-
-## Part 2/2 — Save & Manage (steps 5–6, "View rule" re-entry)
-
-![Part 2 — Save & Manage](./ignore-rule-flow-part2-en.svg)
+![Annotated interaction flow](./ignore-rule-flow-annotated.svg)
 
 ## Compact flow (nodes only, 5 KB)
 
-![Core flow](./ignore-rule-flow-en.svg)
+![Core flow](./ignore-rule-flow.svg)
 
 ## Mermaid (paste directly into GitHub comments)
 
