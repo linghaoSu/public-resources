@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ignore Differences 编辑器 · 业务流程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gray-1:#F8FBFB; --gray-2:#EFF3F5; --gray-3:#DEE6EB; --gray-4:#CCD6DD;
+  --gray-5:#8FA4B1; --gray-6:#6D7F8B; --gray-7:#495763; --gray-8:#363C4A;
+  --teal-1:#1FBDD0; --teal-2:#00A2B3; --teal-3:#006F8A;
+  --degraded:#E96D76; --healthy:#18BE94;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Heebo',sans-serif;background:var(--gray-2);color:var(--gray-7);padding:40px 24px 60px}
+.wrap{max-width:920px;margin:0 auto}
+h1{font-size:19px;font-weight:700;color:var(--teal-3);text-transform:uppercase;letter-spacing:.05em}
+.sub{font-size:13px;color:var(--gray-6);margin:6px 0 26px}
+.card{background:#fff;border-radius:4px;box-shadow:1px 2px 3px rgba(0,0,0,.1);padding:24px 28px;margin-bottom:22px}
+h2{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--gray-6);margin-bottom:16px}
+/* main steps */
+.steps{list-style:none;position:relative;padding-left:0}
+.steps::before{content:"";position:absolute;left:13px;top:14px;bottom:14px;width:2px;background:var(--gray-3)}
+.steps li{position:relative;padding:9px 0 9px 44px}
+.steps .num{position:absolute;left:0;top:9px;width:28px;height:28px;border-radius:50%;background:var(--teal-2);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps li.sys .num{background:#fff;color:var(--gray-6);box-shadow:inset 0 0 0 2px var(--gray-4)}
+.steps .t{font-size:14.5px;font-weight:700;color:var(--gray-8)}
+.steps .t code{font-family:SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;background:var(--gray-1);border:1px solid var(--gray-3);border-radius:3px;padding:1px 6px;font-weight:400}
+.steps .d{font-size:12.5px;color:var(--gray-6);margin-top:2px;line-height:1.55}
+/* step screenshots */
+.shot{margin:12px 0 4px;border:1px solid var(--gray-3);border-radius:4px;overflow:hidden;background:#fff}
+.shot img{display:block;width:100%;height:auto}
+.shot figcaption{font-size:11px;color:var(--gray-6);padding:6px 12px;border-top:1px solid var(--gray-2);background:var(--gray-1)}
+/* branches */
+.br{display:flex;gap:10px;align-items:flex-start;padding:7px 0;font-size:13px;line-height:1.55}
+.br+.br{border-top:1px solid var(--gray-1)}
+.tag{flex:none;font-size:11px;font-weight:700;border-radius:9px;padding:2px 10px;margin-top:1px;letter-spacing:.02em}
+.tag.red{background:#fdecec;color:#c24545}
+.tag.gray{background:var(--gray-2);color:var(--gray-6)}
+.tag.teal{background:#e2f4f6;color:var(--teal-3)}
+.br b{color:var(--gray-8);font-weight:500}
+/* mermaid card */
+.mermaid{display:flex;justify-content:center;font-size:13px}
+.mmd-note{font-size:11.5px;color:var(--gray-5);margin-top:10px}
+.p2{font-size:12.5px;color:var(--gray-6);line-height:1.6}
+.p2 b{color:var(--gray-7);font-weight:500}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 data-od-id="flow-title">Ignore Differences 编辑器 · 业务流程</h1>
+  <p class="sub" data-od-id="flow-sub">Argo CD 原型 application-detail.html · 对应 argoproj/argo-cd #29330</p>
+
+  <section class="card" data-od-id="flow-main-steps">
+    <h2>主线 — 从差异到规则,零跳转</h2>
+    <ol class="steps">
+      <li><span class="num">1</span><span class="t">打开应用 → Diff Tab</span><div class="d">5 张 CRD 卡片 OutOfSync,Compact / Full 两种视图</div></li>
+      <li><span class="num">2</span><span class="t">hover 差异行,点 <code>Ignore…</code></span><div class="d">绿色新增行上的行内入口</div>
+        <figure class="shot" data-od-id="shot-diff"><img src="assets/flow-shot-diff.png" width="2000" height="1389" alt="Diff Tab:五张 CRD 卡片,绿色新增行右侧显示 Ignore… 行内入口"><figcaption>步骤 1–2 · Diff Tab,绿色新增行 + Ignore… 入口(截图中入口常显,实际 hover 出现)</figcaption></figure>
+      </li>
+      <li class="sys"><span class="num">3</span><span class="t">抽屉滑出(同屏)</span><div class="d">Scope 与 <code>/spec/preserveUnknownFields</code> 已按该行预填</div></li>
+      <li><span class="num">4</span><span class="t">编辑并实时预览</span><div class="d">影响条 <b>Eliminates N of M open diffs</b>,命中行即时黄标 will ignore;指针无效当场报红</div>
+        <figure class="shot" data-od-id="shot-drawer"><img src="assets/flow-shot-drawer.png" width="2000" height="1389" alt="规则抽屉:Scope 与指针已预填,影响条显示 Eliminates 5 of 5,下方命中行黄标 will ignore"><figcaption>步骤 3–4 · 右缘固定抽屉即完整编辑器(Scope / Pointers / JQ / Managers);命中多处时影响条内 ‹ n/N › 前后切换,自动滚动定位并高亮当前卡片</figcaption></figure>
+      </li>
+      <li><span class="num">5</span><span class="t">Save rule</span><div class="d">命中行转灰 ignored · 卡片徽标 1 ignored · 绿条 Rule saved</div>
+        <figure class="shot" data-od-id="shot-saved"><img src="assets/flow-shot-saved.png" width="2000" height="1389" alt="保存后:绿条 Rule saved — 5 diffs now ignored,各卡片带 1 ignored 徽标,命中行转灰"><figcaption>步骤 5 · 保存生效:绿条反馈 + 1 ignored 徽标 + 灰行(Show ignored differences 自动勾选)</figcaption></figure>
+      </li>
+      <li class="sys"><span class="num">6</span><span class="t">Ignored Fields 管理</span><div class="d">规则列表 / 表单 / Preview Against Manifests / 点行 Add to Rule</div>
+        <figure class="shot" data-od-id="shot-manage"><img src="assets/flow-shot-manage.png" width="2000" height="1389" alt="Ignored Fields Tab:左侧规则列表,右侧 Scope、JSON Pointers、JQ 表达式与 Managers 编辑表单"><figcaption>步骤 6 · 管理页:规则列表 + 表单 + Preview Against Manifests</figcaption></figure>
+      </li>
+    </ol>
+  </section>
+
+  <section class="card" data-od-id="flow-branches">
+    <h2>循环与旁路</h2>
+    <div class="br"><span class="tag red">校验循环 ↺</span><span><b>✗ Path does not exist in manifest</b> — 指针错误即时标红,改对才能保存(第 4 步内闭环)</span></div>
+    <div class="br"><span class="tag gray">调整循环 ↺</span><span>命中数不符预期 → 调整 Scope,<b>Name 留空 = 通配全部同类资源</b>,影响条即时刷新</span></div>
+    <div class="br"><span class="tag teal">复用入口 ⤴</span><span>灰行 hover <b>View rule</b> → 抽屉编辑已存规则;绿条 <b>Manage</b> 与抽屉 <b>Advanced ›</b> 跳到管理页</span></div>
+    <div class="br"><span class="tag gray">安全退出</span><span><b>Esc / Cancel</b> 随时关闭抽屉,不写入任何更改</span></div>
+  </section>
+
+  <section class="card" data-od-id="flow-mermaid">
+    <h2>图形版(Mermaid 自动布局)</h2>
+    <pre class="mermaid" id="mmd">
+flowchart TD
+  A["① 打开 Diff Tab"] --> B["② hover 差异行 → Ignore…"]
+  B --> C["③ 抽屉滑出(同屏)<br/>Scope + Pointer 预填"]
+  C --> D{"指针有效?"}
+  D -- "✗ 报错,改指针" --> C
+  D -- "✓" --> E["④ 实时预览<br/>Eliminates N of M · will ignore 黄标"]
+  E --> F{"命中符合预期?"}
+  F -- "否 · 调整 Scope(Name 空=通配)" --> C
+  F -- "是" --> G["⑤ Save rule"]
+  G --> H["行转灰 ignored · 徽标 · 绿条"]
+  H --> I["⑥ Ignored Fields 管理<br/>Preview / Add to Rule"]
+  H -. "View rule 再编辑" .-> C
+    </pre>
+    <p class="mmd-note" id="mmd-note">布局由 Mermaid 自动生成;若上方显示为源码,说明当前环境未能加载 Mermaid CDN,文字主线不受影响。</p>
+  </section>
+
+  <section class="card" data-od-id="flow-phase2">
+    <h2>二期候选(不在本次交付)</h2>
+    <p class="p2"><b>批量 Draft rules from all diffs</b>(一键消除全部现存 diff,#5453)· <b>JQ 表达式命中预览</b> · <b>校验 / 预览后端 API 决策</b>(沿用 manifests 接口或新增端点)</p>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"
+  onerror="document.getElementById('mmd-note').textContent='Mermaid CDN 加载失败——上方为流程源码,文字主线不受影响。'"></script>
+<script>
+if(window.mermaid){
+  try{
+    mermaid.initialize({
+      startOnLoad:false,
+      theme:"base",
+      themeVariables:{
+        fontFamily:"Heebo, sans-serif",
+        primaryColor:"#ffffff",
+        primaryBorderColor:"#00A2B3",
+        primaryTextColor:"#363C4A",
+        lineColor:"#8FA4B1",
+        secondaryColor:"#F8FBFB",
+        tertiaryColor:"#F0F8FA",
+        edgeLabelBackground:"#ffffff"
+      }
+    });
+    mermaid.run({querySelector:"#mmd"});
+  }catch(e){
+    document.getElementById("mmd-note").textContent="Mermaid 渲染失败——上方为流程源码,文字主线不受影响。";
+  }
+}
+</script>
+</body>
+</html>
